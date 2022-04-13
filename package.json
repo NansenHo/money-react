@@ -90,7 +90,9 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.24",
-    "node-sass": "npm:dart-sass"
+    "node-sass": "npm:dart-sass",
+    "svg-sprite-loader": "^6.0.11",
+    "svgo-loader": "^3.0.0"
   },
   "jest": {
     "roots": [
