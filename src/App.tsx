@@ -23,44 +23,62 @@ const Main = styled.div`
 function App() {
     return (
       <Router>
-        <Wrapper>
-          <Main>
-            <Switch>
-              <Route path="/tags">
-                <Tags />
-              </Route>
-              <Route path="/money">
-                <Money />
-              </Route>
-              <Route path="/statistics">
-                <Statistics />
-              </Route>
-              <Redirect exact from="/" to="/money" />
-              <Route path="*">
-                <NoMatch />
-              </Route>
-            </Switch>  
-          </Main>
-          
-
-          <Nav/>
-        </Wrapper>
+        <Switch>
+          <Route path="/tags">
+            <Tags />
+          </Route>
+          <Route path="/money">
+            <Money />
+          </Route>
+          <Route path="/statistics">
+            <Statistics />
+          </Route>
+          <Redirect exact from="/" to="/money" />
+          <Route path="*">
+            <NoMatch />
+          </Route>
+        </Switch>
       </Router>
     )
   }
   
+  // tags 页面
   function Tags() {
-    return <h2>Tags</h2>;
+    return (
+      <Wrapper>
+        <Main>
+          <h2>Tags</h2>
+        </Main>
+        <Nav/>
+      </Wrapper>
+    );
   }
   
+  // 记账页面
   function Money() {
-    return <h2>Money</h2>;
+    return (
+      <Wrapper>
+        <Main>
+          <h2>Money</h2>
+        </Main>
+        <Nav/>
+      </Wrapper>
+    );
   }
   
+  // 统计页面
   function Statistics() {
-    return <h2>Statistics</h2>;
+    return (
+      <Wrapper>
+        <Main>
+          <h2>Statistics</h2>
+        </Main>
+        <Nav/>
+      </Wrapper>
+    );
   }
 
+  // 404 页面
   function NoMatch() {
     return <h2>404</h2>;
   }
