@@ -5,20 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import styled from "styled-components"
-import Nav from "./components/Nav"
-
-const Wrapper = styled.div`
-  border: 1px solid red;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Main = styled.div`
-  flex-grow: 1; 
-  overflow: auto;
-`
+import PageLayout from 'components/PageLayout';
 
 function App() {
     return (
@@ -45,36 +32,27 @@ function App() {
   // tags 页面
   function Tags() {
     return (
-      <Wrapper>
-        <Main>
-          <h2>Tags</h2>
-        </Main>
-        <Nav/>
-      </Wrapper>
+      <PageLayout>
+        <h2>Tags</h2>
+      </PageLayout>
     );
   }
   
   // 记账页面
   function Money() {
     return (
-      <Wrapper>
-        <Main>
-          <h2>Money</h2>
-        </Main>
-        <Nav/>
-      </Wrapper>
+      <PageLayout>
+        <h2>Money</h2>
+      </PageLayout>
     );
   }
   
   // 统计页面
   function Statistics() {
     return (
-      <Wrapper>
-        <Main>
-          <h2>Statistics</h2>
-        </Main>
-        <Nav/>
-      </Wrapper>
+      <PageLayout>
+        <h2>Statistics</h2>
+      </PageLayout>
     );
   }
 
