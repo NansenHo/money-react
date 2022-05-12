@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CategorySection = styled.section`
+  font-size: 24px;
   > ul {
     display: flex;
     justify-content: space-around;
@@ -12,6 +13,19 @@ const CategorySection = styled.section`
       text-align: center;
       line-height: 36px;
       background: #fff;
+      padding: 18px 0;
+      position: relative;
+
+      &.selected::after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 100%; 
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: #000;
+      }
     }
   }
 `
@@ -71,7 +85,7 @@ function Money() {
     <PageLayout>
       <CategorySection>
         <ul>
-          <li>收入</li>
+          <li className='selected'>收入</li>
           <li>支出</li>
         </ul>
       </CategorySection>
