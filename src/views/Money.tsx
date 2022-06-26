@@ -30,8 +30,14 @@ const CategorySection = styled.section`
   }
 `
 const TagsSection = styled.section`
-  background: #fff;
+  flex-grow: 1;
   padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  background: #fff;
+
   > ul {
     margin: 0 -12px;
 
@@ -41,12 +47,13 @@ const TagsSection = styled.section`
       text-align: center;
       border-radius: 18px;
       padding: 3px 18px;
-      margin: 0 12px;
+      margin: 6px 12px 0 12px;
       font-size: 14px;
     }
   }
   > button {
     padding: 0 4px;
+    margin-top: 6px;
     border-bottom: 1px solid #333;
     color: #666;
   }
@@ -76,13 +83,53 @@ const NotesSection = styled.section`
   }
 `
 const NumberPadSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  > .output {
+    background: #fff;
+    font-size: 36px;
+    text-align: right;
+    line-height: 72px;
+    padding: 0 16px;
+  }
+  > .pad {
+    
+    > button {
+      float: left;
+      width: 25%;
+      height: 64px;
+      font-size: 18px;
+      border: none;
 
+      &.number-pad-ok-button {
+        height: 128px;
+        float: right;
+      }
+
+      &.zero {
+        width: 50%;
+      }
+      
+      &:nth-child(1) {
+        background-color: red;
+      }
+      &:nth-child(2),
+      &:nth-child(5) {
+        background-color: green;
+      }
+     }
+  }
+`
+
+const MyPageLayout = styled(PageLayout)`
+  display: flex;
+  flex-direction: column;
 `
 
 // 记账页面
 function Money() {
-  return (    
-    <PageLayout>
+  return (
+    <MyPageLayout className="">
       <CategorySection>
         <ul>
           <li className='selected'>收入</li>
@@ -113,10 +160,25 @@ function Money() {
         </label>
       </NotesSection>
       <NumberPadSection>
-        <div>100</div>
-        
-      </NumberPadSection>  
-    </PageLayout>
+        <div className='output'>100</div>
+        <div className='pad clearfix'>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>删除</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>清空</button>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button className='number-pad-ok-button'>OK</button>
+          <button className='zero'>0</button>
+          <button>.</button>
+        </div>
+      </NumberPadSection>
+    </MyPageLayout>
   );
 };
 

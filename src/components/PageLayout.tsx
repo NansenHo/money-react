@@ -13,10 +13,10 @@ const Main = styled.div`
   overflow: auto;
 `
 
-const PageLayout = (props: any) => {
+const PageLayout = (props: any ) => {
    return (
     <Wrapper>
-      <Main>
+      <Main className={props.className}>
         {props.children}
       </Main>
       <Nav/>

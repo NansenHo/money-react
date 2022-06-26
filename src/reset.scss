@@ -176,4 +176,10 @@ button {
 	width: 30px;
 	height: 30px;
 }
+
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+}
  
