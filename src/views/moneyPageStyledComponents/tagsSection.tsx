@@ -1,6 +1,7 @@
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const TagsSection = styled.section`
+const Wrapper = styled.section`
   flex-grow: 1;
   padding: 12px 16px;
   display: flex;
@@ -29,5 +30,22 @@ const TagsSection = styled.section`
     color: #666;
   }
 `
+
+// FC 是 functionComponent 的缩写
+const TagsSection: React.FC = (props) => {
+  return (
+    <Wrapper>
+      <ul>
+        <li>衣</li>
+        <li>食</li>
+        <li>住</li>
+        <li>行</li>
+        <li>衣</li>
+        <li>食</li>
+      </ul>
+      <button>新增标签</button>
+    </Wrapper>
+  )
+}
 
 export { TagsSection }
