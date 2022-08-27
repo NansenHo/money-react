@@ -47,7 +47,7 @@ const TagsSection: React.FC = (props) => {
       setSelectedTags([...selectedTags, tag])
     }
   }
-  const getClass = (tag: string) => {return (selectedTags.includes(tag) ? 'selected' : '')}
+  const getClass = (tag: string) => { return (selectedTags.includes(tag) ? 'selected' : '') }
   return (
     <Wrapper>
       <ul>

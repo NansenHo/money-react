@@ -1,6 +1,6 @@
-import Money from './views/Money';
-import Statistics from './views/Statistics';
-import Tags from './views/Tags';
+import { Money } from './views/Money';
+import { Statistics } from './views/Statistics';
+import { Tags } from './views/Tags';
 import React from 'react';
 import {
   HashRouter as Router,

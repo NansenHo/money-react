@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { CategorySection } from './moneyPageStyledComponents/categorySection';
 import { TagsSection } from './moneyPageStyledComponents/tagsSection';
-import { NotesSection } from './moneyPageStyledComponents/notesSection';
+import { NoteSection } from './moneyPageStyledComponents/noteSection';
 import { NumberPadSection } from './moneyPageStyledComponents/numberPadSection';
 
 const MyPageLayout = styled(PageLayout)`
@@ -22,14 +22,8 @@ function Money() {
           <li>支出</li>
         </ul>
       </CategorySection>
-      <TagsSection>
-      </TagsSection>
-      <NotesSection>
-        <label>
-          <span>备注：</span>
-          <input type="text" />
-        </label>
-      </NotesSection>
+      <TagsSection/>
+      <NoteSection/>
       <NumberPadSection>
         <div className='output'>100</div>
         <div className='pad clearfix'>
@@ -53,4 +47,4 @@ function Money() {
   );
 };
 
-export default Money;
+export { Money }

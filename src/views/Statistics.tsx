@@ -10,4 +10,4 @@ function Statistics() {
   );
 };
 
-export default Statistics;
+export { Statistics }
