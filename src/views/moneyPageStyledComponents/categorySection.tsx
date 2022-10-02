@@ -29,6 +29,7 @@ const Wrapper = styled.section`
   }
 `
 
+// 别忘了 react 组件首字母大写
 const CategorySection: React.FC = () => {
   // <('-' | '+')>[] 是在限定 categoryList 一个仅由 '-' 和 '+' 组成的字符串数组
   const [categoryList] = useState<('-' | '+')[]>(['-', '+'])
