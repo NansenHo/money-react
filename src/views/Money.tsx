@@ -16,14 +16,10 @@ const MyPageLayout = styled(PageLayout)`
 function Money() {
   return (
     <MyPageLayout className="">
-      <CategorySection>
-        <ul>
-          <li className='selected'>收入</li>
-          <li>支出</li>
-        </ul>
-      </CategorySection>
+      <CategorySection/>
       <TagsSection/>
       <NoteSection/>
+      
       <NumberPadSection>
         <div className='output'>100</div>
         <div className='pad clearfix'>
