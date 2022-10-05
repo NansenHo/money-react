@@ -32,15 +32,20 @@ const Wrapper = styled.section`
   }
 `
 
-const NumberPadSection: React.FC = () => {
+type Props = {
+  value: string,
+  onChange: (value: string) => void,
+}
+
+const NumberPadSection: React.FC<Props> = (props) => {
   const [buttonList] = useState<string[]>(['1', '2', '3', '删除', '4', '5', '6', '清空', '7', '8', '9', 'OK', '0', '.'])
-  const [output, _setOutput] = useState<string>('0')
+  const output = props.value
   // 封装 _setOutput 函数
   const setOutput = (target_number: string) => {
     // 增加【判断有效位数（不包括小数点）】逻辑
     const output_length = (target_number.includes('.') ? (target_number.length - 1) : target_number.length)
     if (output_length > 16) { return }
-    _setOutput(target_number)
+    props.onChange(target_number)
   }
   // 也可以使用 HTML 的 MouseEvent 但是它不好用
   // React.MouseEvent 是 React 封装的 MouseEvent 更好用

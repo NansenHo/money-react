@@ -29,11 +29,17 @@ const Wrapper = styled.section`
   }
 `
 
+type Category = '-' | '+'
+type Props = {
+  value: Category;
+  onChange: (value: Category) => void;
+}
+
 // 别忘了 react 组件首字母大写
-const CategorySection: React.FC = () => {
+const CategorySection: React.FC<Props> = (props) => {
   // <('-' | '+')>[] 是在限定 categoryList 一个仅由 '-' 和 '+' 组成的字符串数组
   const [categoryList] = useState<('-' | '+')[]>(['-', '+'])
-  const [key, setKey] = useState<string>('-')
+  const key = props.value
   const keyMap = {'-': '支出', '+': '收入'}
   return (
     <Wrapper>
@@ -42,7 +48,7 @@ const CategorySection: React.FC = () => {
           <li className={key === c ? 'selected' : ''}
               key={c}
               // onClick 等于一个函数，如果你要在里面直接执行一个函数，那这个函数需要返回一个函数
-              onClick={()=>{setKey(c)}}
+              onClick={() => { props.onChange(c) }}
           >{keyMap[c]}</li>
         )}
       </ul>

@@ -1,5 +1,5 @@
 import PageLayout from '../components/PageLayout';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { CategorySection } from './moneyPageStyledComponents/categorySection';
@@ -12,14 +12,34 @@ const MyPageLayout = styled(PageLayout)`
   flex-direction: column;
 `
 
-// 记账页面
 function Money() {
+  const [selected, setSelected] = useState({
+    tags: [] as string[],
+    category: '-' as ('-' | '+'),
+    note: '',
+    amount: '',
+  })
+
+  // typeof 可以拿到一个值的类型
+  // obj: Partial<typeof selected> 表明 obj 的类型是 selected 的一部分
+  const onChange = (obj: Partial<typeof selected>) => {
+    setSelected({
+      ...selected,
+      ...obj,
+    })
+  }
+
   return (
     <MyPageLayout className="">
-      <CategorySection/>
-      <TagsSection/>
-      <NoteSection/>
-      <NumberPadSection/>
+      <CategorySection value={selected.category} 
+                       onChange={ category => onChange({category}) }/>
+      <TagsSection value={selected.tags}
+                   // {tags} 是 {tags: tags} 的缩写
+                   onChange={ tags => onChange({tags}) }/>
+      <NoteSection value={selected.note}
+                   onChange={ note => onChange({note}) }/>
+      <NumberPadSection value={selected.amount} 
+                        onChange={ amount => onChange({amount})}/>
     </MyPageLayout>
   );
 };

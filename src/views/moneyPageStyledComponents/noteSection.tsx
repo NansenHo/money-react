@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 
 const Wrapper = styled.section`
   background: #f5f5f5;
@@ -26,14 +26,20 @@ const Wrapper = styled.section`
   }
 `
 
-const NoteSection: React.FC = () => {
-  // 使用 <type> 为 useState 的默认值指定类型
-  const [note, setNote] = useState<string>('')
+// type 里面每一项之间用 ; 或者 , 隔开都可以
+type Props = {
+  value: string;
+  onChange: (value: string) => void;
+} 
+
+const NoteSection: React.FC<Props> = (props) => {
+  const note = props.value
+
   // 不需要实时监听 value 的变化 - 选择非受控模式
   const ref_input = useRef<HTMLInputElement>(null)
   const onBlur_getNote = () => {
     if (ref_input !== null) {
-      setNote(ref_input.current?.value!)
+      props.onChange(ref_input.current?.value!)
     }
   }
   return (
