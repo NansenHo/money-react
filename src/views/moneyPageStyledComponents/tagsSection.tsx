@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { useTags } from '../ts/useTags' 
 
 const Wrapper = styled.section`
   flex-grow: 1;
@@ -50,8 +51,8 @@ type Props = {
 // 参数的类型都是用 <> 包起来的（执行函数的时候）
 const TagsSection: React.FC<Props> = (props) => {
   const selectedTags = props.value
-  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
   // 函数的参数在括号中用 : 声明即可（声明函数的时候）
+  const { tags } = useTags()
   const addSelectedTags = (tag: string) => {
     if (selectedTags.includes(tag)) {
       // React 不允许子组件写 props ，只能读，如果要改，就通知父组件改
