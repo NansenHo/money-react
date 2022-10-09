@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import Icon from './Icon'
+import { Icon } from './Icon'
 
 const NavWrapper = styled.nav`
-  background: #fff;
+  padding-top: 8px;
   line-height: 24px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+  border-top: 1px solid #E5E5E5;
+  background: #fff;
+
   > ul {
     display: flex;
     
@@ -19,19 +21,33 @@ const NavWrapper = styled.nav`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: grey;
+        // 8C8C8C
+        color: #8C8C8C;
 
         > .icon {
-          fill: grey;
+          width: 20px;
+          height: 20px;
+          fill: #8C8C8C;
+          padding: 6px;
+          border-radius: 50%;
         }
 
         &.selected {
-          color: red;
+          color: #FFAF25;
 
           > .icon {
-            fill: red;
+            width: 16px;
+            height: 16px;
+            fill: #FFF;
+            background: #FFAF25;
           }
         }
+      }
+
+      > p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
       }
     }
   }
@@ -44,19 +60,19 @@ const Nav = () => {
             <li>
               <NavLink to="/tags" activeClassName='selected'>
                 <Icon name="tags"></Icon>
-                标签页
+                <p className="nav-title">标签页</p>
               </NavLink>
             </li>
             <li>
               <NavLink to="/money" activeClassName='selected'>
                 <Icon name="book"></Icon> 
-                记账页
+                <p className="nav-title">记账页</p>
               </NavLink>
             </li>
             <li>
               <NavLink to="/statistics" activeClassName='selected'>
                 <Icon name="logs"></Icon>
-                统计页
+                <p className="nav-title">统计页</p>
               </NavLink>
             </li>
           </ul>

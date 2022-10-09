@@ -125,21 +125,25 @@ xmp {
 	margin: 0;
 	padding: 0;
 }
+
 *::before,
 *::after {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
+
 body {
 	font: 14px/1 "PingFang SC", "Microsoft YaHei", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 img {
 	display: block;
 	border: none;
 }
+
 dl,
 li,
 menu,
@@ -147,6 +151,7 @@ ol,
 ul {
 	list-style: none;
 }
+
 button,
 input,
 select,
@@ -154,6 +159,7 @@ textarea {
 	box-sizing: border-box;
 	outline: none;
 }
+
 a,
 a:link,
 a:visited,
@@ -161,20 +167,23 @@ a:hover,
 a:active {
 	text-decoration: none;
 }
+
 body {
     font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
     font-size: 14px;
     line-height: 1.2;
 	background: #f5f5f5;
 }
+
 button {
 	font-family: inherit;
 	background-color: none;
 	border: none;
 }
+
 .icon {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 }
 
 .clearfix::after {

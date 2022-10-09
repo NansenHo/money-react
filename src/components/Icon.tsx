@@ -3,6 +3,7 @@ import React from 'react';
 require('../icons/book.svg');
 require('../icons/logs.svg');
 require('../icons/tags.svg');
+require('../icons/right.svg')
 
 // const importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
 // try {
@@ -10,7 +11,6 @@ require('../icons/tags.svg');
 // } catch (error) {
 //     console.log(error);
 // }
-
 
 // 类型别名必须大写
 type PropsType = {
@@ -25,4 +25,4 @@ const Icon = (props: PropsType) => {
     )
 };
 
-export default Icon
+export { Icon }
