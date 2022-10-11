@@ -19,6 +19,13 @@ const TagList = styled.ol`
     padding: 7px 0;
     margin: 0 8px;
     border-bottom: 1px solid #E5E5E5;
+
+    > span {
+      width: calc(100% - 8px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   > li:last-child {
