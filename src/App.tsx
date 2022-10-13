@@ -1,6 +1,7 @@
 import { Money } from './views/Money';
 import { Statistics } from './views/Statistics';
 import { Tags } from './views/Tags';
+import { TagEdit } from 'views/TagEdit';
 import React from 'react';
 import {
   HashRouter as Router,
@@ -19,13 +20,17 @@ function App() {
       <AppWrapper>
         <Router>
           <Switch>
-            <Route path="/tags">
+            {/* exact 精确匹配路由，只有完全符合条件才会跳转 */}
+            <Route exact path="/tags/:tag">
+              <TagEdit />
+            </Route>
+            <Route exact path="/tags">
               <Tags />
             </Route>
-            <Route path="/money">
+            <Route exact path="/money">
               <Money />
             </Route>
-            <Route path="/statistics">
+            <Route exact path="/statistics">
               <Statistics />
             </Route>
             <Redirect exact from="/" to="/money" />

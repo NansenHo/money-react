@@ -1,5 +1,6 @@
 import PageLayout from '../components/PageLayout';
 import React from 'react';
+import {Link} from 'react-router-dom'
 import { useTags } from './ts/useTags'
 import styled from 'styled-components'
 import { Icon } from '../components/Icon'
@@ -11,20 +12,24 @@ const TagList = styled.ol`
   border-radius: 8px;
 
   > li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     font-size: 16px;
     line-height: 26px;
-    padding: 7px 0;
     margin: 0 8px;
     border-bottom: 1px solid #E5E5E5;
 
-    > span {
-      width: calc(100% - 8px);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    > a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 0;
+      color: #262626;
+
+      > span {
+        width: calc(100% - 8px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      } 
     }
   }
 
@@ -55,11 +60,13 @@ function Tags() {
   const { tags, setTags } = useTags()
   return (
     <PageLayout>
-      <TagList>{ tags.map(t => 
+      <TagList>{tags.map(t => 
         <li key={t}>
-          <span>{t}</span>
-          <Icon name="right"></Icon>
-        </li>) }
+          <Link to={`/tag/${t}`}>
+            <span>{t}</span>
+            <Icon name="right"></Icon>
+          </Link>
+        </li>)}
       </TagList>
       <Center>
         <Button>新增标签</Button>
