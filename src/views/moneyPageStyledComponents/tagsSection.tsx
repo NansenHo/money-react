@@ -37,11 +37,11 @@ const Wrapper = styled.section`
 `
 
 type Props = { 
-  value: string[];
+  value: number[];
   // onChange: Function; 也可以，但这样不能定义参数和返回值的类型
   // void 表明无返回值
   // 函数参数的类型在括号中，用 : 声明类型即可（对象中声明函数的时候）
-  onChange: (value: string[]) => void;
+  onChange: (value: number[]) => void;
 }
 
 // FC 是 functionComponent 的缩写
@@ -53,25 +53,25 @@ const TagsSection: React.FC<Props> = (props) => {
   const selectedTags = props.value
   // 函数的参数在括号中用 : 声明即可（声明函数的时候）
   const { tags } = useTags()
-  const addSelectedTags = (tag: string) => {
-    if (selectedTags.includes(tag)) {
+  const addSelectedTags = (tagId: number) => {
+    if (selectedTags.includes(tagId)) {
       // React 不允许子组件写 props ，只能读，如果要改，就通知父组件改
-      props.onChange(selectedTags.filter(item => item !== tag))
+      props.onChange(selectedTags.filter(item => item !== tagId))
     } else {
-      props.onChange([...selectedTags, tag])
+      props.onChange([...selectedTags, tagId])
     }
   }
-  const getClass = (tag: string) => { return (selectedTags.includes(tag) ? 'selected' : '') }
+  const getClass = (tagId: number) => { return (selectedTags.includes(tagId) ? 'selected' : '') }
   return (
     <Wrapper>
       <ul>
         {tags.map(tag => {
           // 如果接受的是一个函数 fn，那不能是一个执行函数 fn()
-          return <li key={tag}
-              onClick={()=>{addSelectedTags(tag)}}
+          return <li key={tag.id}
+              onClick={()=>{addSelectedTags(tag.id)}}
               // className 接受一个字符串，对应 getClass(tag) 的返回值是一个字符串
-              className={getClass(tag)}>
-            {tag}
+              className={getClass(tag.id)}>
+            {tag.name}
           </li>
         })}
       </ul>

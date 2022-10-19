@@ -57,13 +57,13 @@ const Button = styled.button`
 
 // tags 页面
 function Tags() {
-  const { tags, setTags } = useTags()
+  const { tags } = useTags()
   return (
     <PageLayout>
       <TagList>{tags.map(t => 
-        <li key={t}>
-          <Link to={`/tag/${t}`}>
-            <span>{t}</span>
+        <li key={t.id}>
+          <Link to={`/tag/${t.name}`}>
+            <span>{t.name}</span>
             <Icon name="right"></Icon>
           </Link>
         </li>)}

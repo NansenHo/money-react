@@ -14,7 +14,7 @@ const MyPageLayout = styled(PageLayout)`
 
 function Money() {
   const [selected, setSelected] = useState({
-    tags: [] as string[],
+    tagIds: [] as number[],
     category: '-' as ('-' | '+'),
     note: '',
     amount: '',
@@ -33,9 +33,9 @@ function Money() {
     <MyPageLayout className="">
       <CategorySection value={selected.category} 
                        onChange={ category => onChange({category}) }/>
-      <TagsSection value={selected.tags}
+      <TagsSection value={selected.tagIds}
                    // {tags} 是 {tags: tags} 的缩写
-                   onChange={ tags => onChange({tags}) }/>
+                   onChange={ tagIds => onChange({tagIds}) }/>
       <NoteSection value={selected.note}
                    onChange={ note => onChange({note}) }/>
       <NumberPadSection value={selected.amount} 
