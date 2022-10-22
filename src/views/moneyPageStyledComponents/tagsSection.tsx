@@ -1,3 +1,4 @@
+import { createId } from 'lib/createId'
 import React from 'react'
 import styled from 'styled-components'
 import { useTags } from '../ts/useTags' 
@@ -52,13 +53,19 @@ type Props = {
 const TagsSection: React.FC<Props> = (props) => {
   const selectedTags = props.value
   // 函数的参数在括号中用 : 声明即可（声明函数的时候）
-  const { tags } = useTags()
-  const addSelectedTags = (tagId: number) => {
+  const { tags, setTags } = useTags()
+  const onToggleTags = (tagId: number) => {
     if (selectedTags.includes(tagId)) {
       // React 不允许子组件写 props ，只能读，如果要改，就通知父组件改
       props.onChange(selectedTags.filter(item => item !== tagId))
     } else {
       props.onChange([...selectedTags, tagId])
+    }
+  }
+  const onAddTags = () => {
+    let tagName = window.prompt('请输入标签名')
+    if (tagName) {
+      setTags([...tags, {id: createId(), name: tagName}])
     }
   }
   const getClass = (tagId: number) => { return (selectedTags.includes(tagId) ? 'selected' : '') }
@@ -68,14 +75,14 @@ const TagsSection: React.FC<Props> = (props) => {
         {tags.map(tag => {
           // 如果接受的是一个函数 fn，那不能是一个执行函数 fn()
           return <li key={tag.id}
-              onClick={()=>{addSelectedTags(tag.id)}}
+              onClick={()=>{onToggleTags(tag.id)}}
               // className 接受一个字符串，对应 getClass(tag) 的返回值是一个字符串
               className={getClass(tag.id)}>
             {tag.name}
           </li>
         })}
       </ul>
-      <button>新增标签</button>
+      <button onClick={onAddTags}>新增标签</button>
     </Wrapper>
   )
 }

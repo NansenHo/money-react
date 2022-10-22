@@ -62,7 +62,7 @@ function Tags() {
     <PageLayout>
       <TagList>{tags.map(t => 
         <li key={t.id}>
-          <Link to={`/tag/${t.name}`}>
+          <Link to={`/tag/${t.id}`}>
             <span>{t.name}</span>
             <Icon name="right"></Icon>
           </Link>

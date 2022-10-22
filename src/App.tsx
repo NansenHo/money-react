@@ -21,7 +21,7 @@ function App() {
         <Router>
           <Switch>
             {/* exact 精确匹配路由，只有完全符合条件才会跳转 */}
-            <Route exact path="/tag/:tag">
+            <Route exact path="/tag/:id">
               <TagEdit />
             </Route>
             <Route exact path="/tags">
