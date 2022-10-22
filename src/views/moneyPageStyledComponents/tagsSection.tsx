@@ -1,7 +1,7 @@
 import { createId } from 'lib/createId'
 import React from 'react'
 import styled from 'styled-components'
-import { useTags } from '../ts/useTags' 
+import { useTags } from '../ts/useTags'
 
 const Wrapper = styled.section`
   flex-grow: 1;
@@ -53,19 +53,13 @@ type Props = {
 const TagsSection: React.FC<Props> = (props) => {
   const selectedTags = props.value
   // 函数的参数在括号中用 : 声明即可（声明函数的时候）
-  const { tags, setTags } = useTags()
+  const { tags, addTags } = useTags()
   const onToggleTags = (tagId: number) => {
     if (selectedTags.includes(tagId)) {
       // React 不允许子组件写 props ，只能读，如果要改，就通知父组件改
       props.onChange(selectedTags.filter(item => item !== tagId))
     } else {
       props.onChange([...selectedTags, tagId])
-    }
-  }
-  const onAddTags = () => {
-    let tagName = window.prompt('请输入标签名')
-    if (tagName) {
-      setTags([...tags, {id: createId(), name: tagName}])
     }
   }
   const getClass = (tagId: number) => { return (selectedTags.includes(tagId) ? 'selected' : '') }
@@ -82,7 +76,7 @@ const TagsSection: React.FC<Props> = (props) => {
           </li>
         })}
       </ul>
-      <button onClick={onAddTags}>新增标签</button>
+      <button onClick={addTags}>新增标签</button>
     </Wrapper>
   )
 }

@@ -10,7 +10,13 @@ const defaultTags = [
 
 let useTags = () => {
   const [tags, setTags] = useState<{id: number; name: string}[]>(defaultTags)
-  return {tags, setTags}
+  const addTags = () => {
+    let tagName = window.prompt('请输入标签名')
+    if (tagName) {
+      setTags([...tags, {id: createId(), name: tagName}])
+    }
+  }
+  return {tags, setTags, addTags}
 }
 
 export { useTags }

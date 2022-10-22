@@ -57,7 +57,7 @@ const Button = styled.button`
 
 // tags 页面
 function Tags() {
-  const { tags } = useTags()
+  const { tags, addTags } = useTags()
   return (
     <PageLayout>
       <TagList>{tags.map(t => 
@@ -69,7 +69,7 @@ function Tags() {
         </li>)}
       </TagList>
       <Center>
-        <Button>新增标签</Button>
+        <Button onClick={addTags}>新增标签</Button>
       </Center>
     </PageLayout>
   );
