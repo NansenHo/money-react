@@ -58,6 +58,7 @@ const Nav = () => {
         <NavWrapper>
           <ul>
             <li>
+              {/* NavLink 里可以加 exact 属性来精确匹配 */}
               <NavLink to="/tags" activeClassName='selected'>
                 <Icon name="tags"></Icon>
                 <p className="nav-title">标签页</p>

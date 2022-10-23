@@ -1,7 +1,7 @@
 import { createId } from 'lib/createId'
 import React from 'react'
 import styled from 'styled-components'
-import { useTags } from '../ts/useTags'
+import { useTags } from 'lib/useTags'
 
 const Wrapper = styled.section`
   flex-grow: 1;

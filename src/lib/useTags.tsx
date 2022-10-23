@@ -16,7 +16,10 @@ let useTags = () => {
       setTags([...tags, {id: createId(), name: tagName}])
     }
   }
-  return {tags, setTags, addTags}
+  const findTag = (id: number) => {
+    return tags.filter(t => t.id === id)[0]
+  }
+  return {tags, setTags, addTags, findTag}
 }
 
 export { useTags }
