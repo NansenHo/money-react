@@ -22,7 +22,7 @@ function App() {
           <Switch>
             {/* exact 精确匹配路由，只有完全符合条件才会跳转 */}
             {/* 这里不用 name 而是用 id 来作为 url。是因为最好用一个不变的东西来做 url，否则改名了那个 url 就作废了 */}
-            <Route exact path="/tag/:id">
+            <Route exact path="/tags/:id">
               <TagEdit />
             </Route>
             <Route exact path="/tags">

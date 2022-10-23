@@ -1,9 +1,10 @@
-import PageLayout from '../components/PageLayout';
 import React from 'react';
 import {Link} from 'react-router-dom'
-import { useTags } from 'lib/useTags'
 import styled from 'styled-components'
-import { Icon } from '../components/Icon'
+import { useTags } from 'lib/useTags'
+import { PageLayout } from 'components/PageLayout'
+import { Icon } from 'components/Icon'
+import { Button } from 'components/Button'
 
 // 自定义标签首字母要大写
 const TagList = styled.ol`
@@ -45,16 +46,6 @@ const Center = styled.div`
   justify-content: center;
 `
 
-const Button = styled.button`
-  padding: 6px 16px;
-  font-size: 14px;
-  line-height: 22px;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  background: #FFAF25;
-`
-
 // tags 页面
 function Tags() {
   const { tags, addTags } = useTags()
@@ -62,7 +53,7 @@ function Tags() {
     <PageLayout>
       <TagList>{tags.map(t => 
         <li key={t.id}>
-          <Link to={`/tag/${t.id}`}>
+          <Link to={`/tags/${t.id}`}>
             <span>{t.name}</span>
             <Icon name="right"></Icon>
           </Link>

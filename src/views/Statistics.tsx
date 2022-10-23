@@ -1,4 +1,4 @@
-import PageLayout from '../components/PageLayout';
+import { PageLayout } from 'components/PageLayout';
 import React from 'react';
 
 // 统计页面

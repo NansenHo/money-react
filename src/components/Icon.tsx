@@ -1,9 +1,10 @@
 import React from 'react';
 
-require('../icons/book.svg');
-require('../icons/logs.svg');
-require('../icons/tags.svg');
+require('../icons/book.svg')
+require('../icons/logs.svg')
+require('../icons/tags.svg')
 require('../icons/right.svg')
+require('../icons/left.svg')
 
 // const importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
 // try {
