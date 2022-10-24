@@ -22,6 +22,7 @@ function Money() {
 
   // typeof 可以拿到一个值的类型
   // obj: Partial<typeof selected> 表明 obj 的类型是 selected 的一部分
+  // Partial /ˈpɑːrʃ(ə)l/ 部分的，不完全的
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,

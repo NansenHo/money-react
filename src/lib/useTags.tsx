@@ -19,7 +19,13 @@ let useTags = () => {
   const findTag = (id: number) => {
     return tags.filter(t => t.id === id)[0]
   }
-  return {tags, setTags, addTags, findTag}
+  const editTag = (id: number, name: string) => {
+    setTags(tags.map(t => t.id === id ? {id, name} : t))
+  }
+  const deleteTag = (id: number) => {
+    setTags(tags.filter(t => t.id !== id))
+  }
+  return { tags, setTags, addTags, findTag, editTag, deleteTag }
 }
 
 export { useTags }
