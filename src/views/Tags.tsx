@@ -5,6 +5,7 @@ import { useTags } from 'lib/useTags'
 import { PageLayout } from 'components/PageLayout'
 import { Icon } from 'components/Icon'
 import { Button } from 'components/Button'
+import { Center } from 'components/Center'
 
 // 自定义标签首字母要大写
 const TagList = styled.ol`
@@ -37,13 +38,6 @@ const TagList = styled.ol`
   > li:last-child {
     border-bottom: none;
   }
-`
-
-const Center = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
 `
 
 // tags 页面
