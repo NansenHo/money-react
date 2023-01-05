@@ -1,7 +1,6 @@
-let id = Number(window.localStorage.getItem('max_id' || '0'))
-
 // ():number 表示返回值的类型是 number
 const createId = ():number => {
+  let id = Number(window.localStorage.getItem('max_id')) || 0
   id += 1
   window.localStorage.setItem('max_id', id.toString())
   return id

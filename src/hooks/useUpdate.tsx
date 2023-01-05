@@ -1,4 +1,3 @@
-import react from 'react'
 import { useRef, useEffect } from 'react'
 
 const useUpdate = (fn: () => void, deps: any[]) => {
