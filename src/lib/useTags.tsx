@@ -14,12 +14,20 @@ let useTags = () => {
   
   // 如果第二个参数是一个空数组，那就相当于 mounted
   useEffect(()=>{
-    setTags(JSON.parse(window.localStorage.getItem('tags') || '[]'))
+    let tags = JSON.parse(window.localStorage.getItem('tags') || '[]')
+    if (tags.length === 0) {
+      tags = [
+        {id: 1, name: 'Food'},
+        {id: 2, name: 'Clothes'},
+        {id: 3, name: 'Rent'},
+        {id: 4, name: 'Traffic fees'}
+      ]
+      window.localStorage.setItem('max_id', '4')
+    }
+    setTags(tags)
   }, [])
 
   useUpdate(() => {
-    console.log('set item')
-    console.log(JSON.stringify(tags))
     localStorage.setItem('tags', JSON.stringify(tags))
   }, [tags])
 
