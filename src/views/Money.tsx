@@ -32,6 +32,8 @@ function Money() {
 
   return (
     <MyPageLayout className="">
+      {/* {JSON.stringify(selected)}
+      <hr /> */}
       <CategorySection value={selected.category} 
                        onChange={ category => onChange({category}) }/>
       <TagsSection value={selected.tagIds}
@@ -39,7 +41,7 @@ function Money() {
                    onChange={ tagIds => onChange({tagIds}) }/>
       <NoteSection value={selected.note}
                    onChange={ note => onChange({note}) }/>
-      <NumberPadSection value={selected.amount} 
+      <NumberPadSection value={selected.amount}
                         onChange={ amount => onChange({amount})}/>
     </MyPageLayout>
   );

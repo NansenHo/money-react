@@ -39,7 +39,7 @@ type Props = {
 
 const NumberPadSection: React.FC<Props> = (props) => {
   const [buttonList] = useState<string[]>(['1', '2', '3', '删除', '4', '5', '6', '清空', '7', '8', '9', 'OK', '0', '.'])
-  const output = props.value
+  const output = props.value || '0'
   // 封装 _setOutput 函数
   const setOutput = (target_number: string) => {
     // 增加【判断有效位数（不包括小数点）】逻辑
