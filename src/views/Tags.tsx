@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
-import { useTags } from 'lib/useTags'
+import { useTags } from 'hooks/useTags'
 import { PageLayout } from 'components/PageLayout'
 import { Icon } from 'components/Icon'
 import { Button } from 'components/Button'

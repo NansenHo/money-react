@@ -42,7 +42,7 @@ function Money() {
       <NoteSection value={selected.note}
                    onChange={ note => onChange({note}) }/>
       <NumberPadSection value={selected.amount}
-                        onChange={ amount => onChange({amount})}/>
+                        onChange={ amount => onChange({amount}) }/>
     </MyPageLayout>
   );
 };

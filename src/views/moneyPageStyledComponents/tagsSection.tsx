@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTags } from 'lib/useTags'
+import { useTags } from 'hooks/useTags'
 
 const Wrapper = styled.section`
   flex-grow: 1;
