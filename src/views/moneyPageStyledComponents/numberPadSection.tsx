@@ -33,8 +33,9 @@ const Wrapper = styled.section`
 `
 
 type Props = {
-  value: string,
-  onChange: (value: string) => void,
+  value: string
+  onChange: (value: string) => void
+  onOK?: () => void
 }
 
 const NumberPadSection: React.FC<Props> = (props) => {
@@ -84,7 +85,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
         setOutput(output_after_delete)
         break;
       case 'OK':
-        console.log('OK')
+        if (props.onOK) { props.onOK() }
         break;
     }
   }

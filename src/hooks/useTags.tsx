@@ -39,6 +39,7 @@ let useTags = () => {
   const deleteTag = (id: number) => {
     setTags(tags.filter(t => t.id !== id))
   }
+  
   return { tags, setTags, addTags, findTag, editTag, deleteTag }
 }
 

@@ -1,3 +1,5 @@
+// 封装监听更新（第一次渲染不触发）
+
 import { useRef, useEffect } from 'react'
 
 const useUpdate = (fn: () => void, deps: any[]) => {
