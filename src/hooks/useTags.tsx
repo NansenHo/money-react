@@ -39,8 +39,11 @@ let useTags = () => {
   const deleteTag = (id: number) => {
     setTags(tags.filter(t => t.id !== id))
   }
+  const getName = (id: number) => {
+    return tags.find(t => t.id === id)?.name
+  }
   
-  return { tags, setTags, addTags, findTag, editTag, deleteTag }
+  return { tags, setTags, addTags, findTag, editTag, deleteTag, getName }
 }
 
 export { useTags }

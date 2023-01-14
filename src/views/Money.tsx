@@ -35,9 +35,10 @@ function Money() {
   // console.log('records')
   // console.log(recods)
   const submit = () => {
-    addRecord(selected)
-    alert('保存成功')
-    setSelected(default_values)
+    if (addRecord(selected)) {
+      alert('保存成功')
+      setSelected(default_values)
+    }
     // 在这里打印不出最新的 records，why?
     // console.log(records)
   }

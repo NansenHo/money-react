@@ -8,7 +8,7 @@ type RecordItem = {
   category: '+' | '-'
   note: string
   amount: string
-  // createdAt 不能是 Date 类型，JSON 不支持 Date
+  // JSON 不支持 Date 类型，createdAt 不能是 Date 类型
   createdAt: string // ISO 8601
 }
 // Omit<RecordItem, 'createdAt'> 表示忽略 RecordItem 的 createdAt 属性
@@ -16,7 +16,7 @@ type RecordItem = {
 type newRecordItem = Omit<RecordItem, 'createdAt'>
 
 const useRecord = () => {
-  const [records, setRecord] = useState<newRecordItem[]>([])
+  const [records, setRecord] = useState<RecordItem[]>([])
 
   useEffect(()=>{
     const local_records = window.localStorage.getItem('records')
@@ -29,8 +29,13 @@ const useRecord = () => {
   }, [records])
 
   const addRecord = (newRecord: newRecordItem) => {
+    if ((Number(newRecord.amount) <= 0) || (newRecord.tagIds.length === 0)) {
+      alert('标签或金额不能为空')
+      return false
+    }
     const record_item = {...newRecord, createdAt: (new Date()).toISOString()}
     setRecord([...records, record_item])
+    return true
   }
 
   return { records, addRecord }
