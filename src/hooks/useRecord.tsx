@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useUpdate } from 'hooks/useUpdate'
+import day from 'dayjs'
 
 type RecordItem = {
   tagIds: number[]
@@ -33,7 +34,8 @@ const useRecord = () => {
       alert('标签或金额不能为空')
       return false
     }
-    const record_item = {...newRecord, createdAt: (new Date()).toISOString()}
+    const createdDate = day((new Date()).toISOString()).format('YYYY-MM-DD')
+    const record_item = {...newRecord, createdAt: createdDate}
     setRecord([...records, record_item])
     return true
   }
