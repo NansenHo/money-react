@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { PageLayout } from 'components/PageLayout';
 import { useRecord } from 'hooks/useRecord';
+import { RecordItem } from 'hooks/useRecord';
 import { CategorySection } from './moneyPageStyledComponents/categorySection';
 import { useTags } from 'hooks/useTags';
 import styled from 'styled-components';
 import day from 'dayjs'
 
 const Item = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 3fr 1fr auto;
+  grid-column-gap: 8px;
   padding: 8px 12px;
   background: #fff;
   color: #333;
@@ -22,11 +24,16 @@ const Item = styled.div`
     }
   }
 
-  > .note {
-    margin-left: 16px;
-    margin-right: auto;
+  > .time, .note {
     color: #999;
   }
+`
+
+const Header = styled.p`
+  font-size: 14px;
+  line-height: 18px;
+  padding: 8px 16px;
+  color: #666;
 `
 
 // 统计页面
@@ -34,37 +41,41 @@ function Statistics() {
   const { records } = useRecord()
   const { getName } = useTags()
   const [ category, setCategory ]  = useState<'-' | '+'>('-')
-  let records_map = new Map()
-  records.forEach(r => {
-    const last_date = r.createdAt
-    console.log(last_date, 'last_date')
-    const one = records_map.get(last_date)
-    console.log(one, 'one')
-    if (!one) {
-      records_map.set(last_date, [])
-      console.log('111111111111')
-      return
+  const selected_Records = records.filter((v: RecordItem) => v.category === category )
+  let hash: {[key: string]: RecordItem[]} = {}
+  selected_Records.forEach(s => {
+    const key = s.createdAt
+    if (!(key in hash)) {
+      hash[key] = []
     }
-    one.push(r)                                                              
+    hash[key].push(s)
   })
-  console.log(records_map)
+  const array = Object.entries(hash).sort((a, b) => {
+    if (a[0] === b[0]) return 0
+    if (a[0] > b[0]) return 1
+    if (a[0] < b[0]) return -1
+    return 0
+  })
 
   return (
     <PageLayout>
       <CategorySection value={category}
                        onChange={ category => setCategory(category) }/>
-      <div>
-        { records.filter(r => r.category === category ).map(r => {
-            return (<Item key={r.createdAt}>
-                      <p className="tagNames">
-                        {r.tagIds.map(t => <span className="tag" key={t}>{getName(t)}</span>)}
-                      </p>
-                      <p className="note">{r.note}</p>
-                      <p className="amount">￥{r.amount}</p>
-                      {/* {day(r.createdAt).format('YYYY年MM月DD日')} */}
-                    </Item>)
-        })}
-      </div>
+                    {/* [key, value] 这里用析构赋值把里面两个元素拿出来 */}
+        { array.map(([key, value]) => <div key={key}>
+            <Header>{day(key).format('YYYY年MM月DD日')}</Header>
+            <div>
+              { value.map(r =>
+                  <Item key={r.createdAt}>
+                    <p className="tagNames">
+                      {r.tagIds.map((t: number) => <span className="tag" key={t}>{getName(t)}</span>)}
+                    </p>
+                    <p className="note">{r.note}</p>
+                    <p className="amount">￥{r.amount}</p>
+                    <p className="time">{day(r.createdAt).format('HH点MM分')}</p>
+                  </Item>) }
+            </div>
+          </div>) }
     </PageLayout>
   );
 };
